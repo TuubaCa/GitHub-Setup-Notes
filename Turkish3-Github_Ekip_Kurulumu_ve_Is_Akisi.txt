@@ -1,0 +1,112 @@
+```plaintext
+# GitHub İş Akışı: Test Lead için Ekip Yönetimi
+
+Bu doküman, test lead olarak bir projeyi GitHub'a gönderme ve 10 kişilik bir ekibin projeye erişimini sağlama adımlarını içerir. Ekibin kendi branch’leri üzerinde çalışabilmesi ve her birinin kendi alanı ile ilgili değişiklikleri yaparken nasıl iş birliği yapabileceğini anlatır.
+
+---
+
+## Adım 1: Projeyi GitHub'a Gönderme
+
+1. **Projenin Yerel Depo (Local Repository) Hazırlığı**
+   - Bilgisayarınızda projeyi bir Git deposu olarak ayarlayın.
+
+     ```bash
+     git init
+     git add .
+     git commit -m "Proje ilk yüklemesi"
+     ```
+
+2. **GitHub’da Yeni Bir Depo Oluşturma**
+   - GitHub hesabınızda yeni bir depo (repository) oluşturun.
+
+3. **Origin Bağlantısını Ayarlama ve Push Yapma**
+   - Projeyi GitHub’a göndermek için kendi GitHub hesabınıza bağlantı ekleyin ve dosyaları yükleyin:
+
+     ```bash
+     git remote add origin https://github.com/KendiKullaniciAdiniz/ProjeAdi.git
+     git push -u origin main
+     ```
+
+---
+
+## Adım 2: Ekip Üyeleri için Branch Oluşturma ve Erişim Sağlama
+
+1. **Her Ekip Üyesi için Branch Oluşturma**
+   - Ekibinizin her üyesi için ayrı bir branch oluşturun. Örneğin, "ali-feature" veya "ayse-bugfix" gibi.
+
+     ```bash
+     git checkout -b ali-feature
+     git push origin ali-feature
+     ```
+
+   - Bu işlemi tüm ekip üyeleri için tekrarlayın.
+
+2. **Branch’lere Erişim Sağlama**
+   - GitHub üzerinden depo ayarlarına gidin ve “Manage Access” bölümünden ekip üyelerinize davet gönderin. Bu sayede üyeler kendi branch’lerine erişim sağlar.
+
+---
+
+## Adım 3: Ekip Üyeleri İçin Günlük İş Akışı
+
+1. **Günlük Güncellemeleri Çekme (Fetch ve Pull)**
+   - Ekip üyeleri, projeyi her gün güncellemek için aşağıdaki komutları kullanarak güncel dosyaları almalı:
+
+     ```bash
+     git fetch origin
+     git pull origin main
+     ```
+
+2. **Branch’e Geçiş ve Değişiklik Yapma**
+   - Her ekip üyesi kendi branch’ine geçerek gerekli değişiklikleri yapar. Örneğin:
+
+     ```bash
+     git checkout ali-feature
+     ```
+
+3. **Değişiklikleri Kendi Branch’lerine Gönderme (Push)**
+   - Değişiklik yapıldığında kendi branch’lerine push yaparlar:
+
+     ```bash
+     git add .
+     git commit -m "Ali'nin değişiklikleri"
+     git push origin ali-feature
+     ```
+
+4. **Ana Branch ile Çakışmaları Çözme**
+   - Ekip üyelerinin yaptığı değişiklikler diğer üyelerin değişiklikleriyle çakışabilir. Çakışmaları çözmek için:
+
+     ```bash
+     git fetch origin
+     git merge origin/main
+     ```
+
+   - Eğer bir çakışma varsa, Git bu durumu bildirir. Çakışan dosyaları manuel olarak düzenleyin, değişiklikleri kaydedin ve birleştirin.
+
+     ```bash
+     git add .
+     git commit -m "Çakışma çözüldü"
+     ```
+
+---
+
+## Adım 4: Ana Branch'e Değişikliklerin Eklenmesi
+
+1. **Pull Request (PR) Açma**
+   - Her ekip üyesi, değişikliklerini ana branch’e almak için bir “pull request” açar.
+
+2. **Pull Request İncelemesi ve Birleştirme (Merge)**
+   - Siz veya bir proje yöneticisi, PR’leri inceler ve uygun bulursa birleştirir (merge eder).
+
+---
+
+## Günlük İş Akışı Özet
+
+- Ekip üyeleri şu adımları takip etmelidir:
+
+  ```bash
+  git fetch origin
+  git pull origin main
+  git checkout kendi-branch
+  git add .
+  git commit -m "Değişiklik açıklaması"
+  git push origin kendi-branch

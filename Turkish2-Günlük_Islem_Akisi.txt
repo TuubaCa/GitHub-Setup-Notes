@@ -1,0 +1,44 @@
+
+
+# Günlük İşlem Akışı: Ana Depodan Güncellemeleri Alma ve Kendi Hesabınıza Gönderme
+
+Ana depoda yapılan değişiklikleri düzenli olarak almak ve kendi GitHub hesabınıza göndermek için aşağıdaki adımları günlük olarak tekrar edin.
+
+Adım 1: Upstream’den Güncellemeleri Çekme (Fetch)
+
+Ana depodan en güncel değişiklikleri almak için aşağıdaki komutu çalıştırın:
+
+git fetch upstream
+
+Bu komut, upstream deposundaki son güncellemeleri indirir ancak henüz kendi dalınıza birleştirmez.
+
+Adım 2: Kendi Dalınıza Geçiş ve Güncellemeleri Birleştirme (Merge)
+
+Kendi main Dalınıza Geçin:
+
+git checkout main
+
+Upstream’den Aldığınız Güncellemeleri Birleştirin:
+
+git merge upstream/main
+
+git checkout main komutu, kendi main dalınıza geçmenizi sağlar. git merge upstream/main komutu, upstream’den aldığınız değişiklikleri kendi dalınıza birleştirir.
+
+Adım 3: Kendi GitHub Hesabınıza Gönderme (Push)
+
+Birleştirdiğiniz güncellemeleri kendi GitHub hesabınıza göndermek için aşağıdaki komutu kullanın:
+
+git push origin main
+
+Bu komut, güncellemeleri kendi GitHub deponuza aktarır. Böylece hem ana depodaki değişiklikler kendi bilgisayarınıza hem de GitHub hesabınıza yansımış olur.
+
+Günlük Özet Akış
+
+Günlük olarak kullanmanız gereken komutlar sırasıyla şunlardır:
+
+git fetch upstream          # Upstream'den güncellemeleri çekin
+git checkout main           # Çalışma dalına geçin
+git merge upstream/main     # Upstream’den gelen değişiklikleri birleştirin
+git push origin main        # Kendi GitHub deponuza güncellemeleri gönderin
+
+Bu adımları her gün tekrarlayarak, ana depodan gelen güncellemeleri kendi GitHub hesabınıza düzenli olarak aktarmış olursunuz.

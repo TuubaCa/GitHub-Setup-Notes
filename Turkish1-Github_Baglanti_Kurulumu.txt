@@ -1,0 +1,38 @@
+# GitHub Bağlantı Kurulumu: Ana Depo "Upstream" Olarak Eklenmesi
+
+Bu döküman, bir ana GitHub deposundan düzenli olarak güncellemeleri nasıl alabileceğinizi ve kendi hesabınıza nasıl göndereceğinizi anlatır. Adımları sırayla takip edin.
+
+---
+
+## Adım 1: Uzaktan Bağlantıları Ayarlama
+
+1. **Origin Bağlantısını Değiştirme**
+   - Klonladığınız depo şu anda ana depoya işaret ediyor. Bu yüzden `origin` bağlantısını kendi GitHub hesabınıza yönlendirmelisiniz.
+   - Kendi GitHub hesabınıza bağlantıyı ayarlamak için terminale şu komutu girin:
+
+     ```bash
+     git remote set-url origin https://github.com/KendiKullaniciAdiniz/ProjeAdi.git
+     ```
+
+2. **Ana Depoyu "Upstream" Olarak Ekleme**
+   - Ana depoyu "upstream" olarak ekleyerek, güncellemeleri kolayca takip edebilirsiniz.
+   - Bunun için terminalde aşağıdaki komutu çalıştırın:
+
+     ```bash
+     git remote add upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git
+     ```
+
+3. **Bağlantıları Doğrulama**
+   - Bağlantıların doğru şekilde ayarlandığını kontrol etmek için şu komutu kullanın:
+
+     ```bash
+     git remote -v
+     ```
+
+   Çıktı aşağıdaki gibi olmalıdır:
+
+   ```plaintext
+   origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (fetch)
+   origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (push)
+   upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (fetch)
+   upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (push)
