@@ -1,38 +1,82 @@
 # GitHub Bağlantı Kurulumu: Ana Depo "Upstream" Olarak Eklenmesi
 
-Bu döküman, bir ana GitHub deposundan düzenli olarak güncellemeleri nasıl alabileceğinizi ve kendi hesabınıza nasıl göndereceğinizi anlatır. Adımları sırayla takip edin.
+Bu döküman, bir ana GitHub deposundan düzgün bir şekilde güncellemeleri nasıl alabileceğinizi ve kendi hesabınıza nasıl göndereceğinizi anlatır. Adımları takip ederek bu süreci kolayca yönetebilirsiniz.
 
 ---
 
 ## Adım 1: Uzaktan Bağlantıları Ayarlama
 
-1. **Origin Bağlantısını Değiştirme**
-   - Klonladığınız depo şu anda ana depoya işaret ediyor. Bu yüzden `origin` bağlantısını kendi GitHub hesabınıza yönlendirmelisiniz.
-   - Kendi GitHub hesabınıza bağlantıyı ayarlamak için terminale şu komutu girin:
+### 1. Origin Bağlantısını Değiştirme
+- Klonladığınız depo, varsayılan olarak ana depoya işaret eder. Kendi hesabınıza yönlendirmek için terminale şu komutu girin:
 
-     ```bash
-     git remote set-url origin https://github.com/KendiKullaniciAdiniz/ProjeAdi.git
-     ```
+```bash
+git remote set-url origin https://github.com/KendiKullaniciAdiniz/ProjeAdi.git
+```
 
-2. **Ana Depoyu "Upstream" Olarak Ekleme**
-   - Ana depoyu "upstream" olarak ekleyerek, güncellemeleri kolayca takip edebilirsiniz.
-   - Bunun için terminalde aşağıdaki komutu çalıştırın:
+### 2. Ana Depoyu "Upstream" Olarak Ekleme
+- Ana depoyu "upstream" olarak ekleyerek güncellemeleri kolayca takip edebilirsiniz. Bunun için terminalde aşağıdaki komutu çalıştırın:
 
-     ```bash
-     git remote add upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git
-     ```
+```bash
+git remote add upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git
+```
 
-3. **Bağlantıları Doğrulama**
-   - Bağlantıların doğru şekilde ayarlandığını kontrol etmek için şu komutu kullanın:
+### 3. Bağlantıları Doğrulama
+- Bağlantıların doğru şekilde ayarlandığını kontrol etmek için terminalde şu komutu kullanın:
 
-     ```bash
-     git remote -v
-     ```
+```bash
+git remote -v
+```
 
-   Çıktı aşağıdaki gibi olmalıdır:
+- Çıktı aşağıdaki gibi olmalıdır:
 
-   ```plaintext
-   origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (fetch)
-   origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (push)
-   upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (fetch)
-   upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (push)
+```plaintext
+origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (fetch)
+origin   https://github.com/KendiKullaniciAdiniz/ProjeAdi.git (push)
+upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (fetch)
+upstream https://github.com/AnaDepoKullaniciAdiniz/ProjeAdi.git (push)
+```
+
+---
+
+## Adım 2: Ana Depodan Güncellemeleri Alma
+
+### 1. Upstream'den Güncellemeleri Çekme (Fetch)
+- Ana depodaki son değişiklikleri bilgisayarınıza almak için terminalde şu komutu kullanın:
+
+```bash
+git fetch upstream
+```
+
+- Bu komut, upstream deposundaki güncellemeleri indirir ancak henüz kendi dalınıza birleştirmez.
+
+---
+
+## Adım 3: Güncellemeleri Kendi Dalınıza Birleştirme (Merge)
+
+### 1. Kendi main Dalınıza Geçin
+
+```bash
+git checkout main
+```
+
+### 2. Güncellemeleri Birleştirin
+
+```bash
+git merge upstream/main
+```
+
+- `git checkout main` komutu, kendi main dalınıza geçmenizi sağlar.
+- `git merge upstream/main` komutu, upstream’den aldığınız değişiklikleri kendi dalınıza birleştirir.
+
+---
+
+## Adım 4: Kendi Hesabınıza Gönderme (Push)
+
+- Birleştirilen güncellemeleri GitHub hesabınıza göndermek için şu komutu kullanın:
+
+```bash
+git push origin main
+```
+
+Bu adımları düzenli olarak uygulayarak, ana depodan gelen güncellemeleri kolayca kendi hesabınıza entegre edebilirsiniz.
+
