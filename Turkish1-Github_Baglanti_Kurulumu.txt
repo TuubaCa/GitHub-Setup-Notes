@@ -3,6 +3,13 @@
 Bu döküman, bir ana GitHub deposundan düzgün bir şekilde güncellemeleri nasıl alabileceğinizi ve kendi hesabınıza nasıl göndereceğinizi anlatır. Adımları takip ederek bu süreci kolayca yönetebilirsiniz.
 
 ---
+Adım 0: Ana Depoyu Forklamak
+GitHub üzerinde çalışmaya başlamadan önce, ana depoyu kendi hesabınıza forklamanız gerekir:
+
+GitHub'da ana depoya gidin.
+Sağ üst köşede bulunan Fork butonuna tıklayın.
+Forklanan depo, artık sizin GitHub hesabınızda olacak.
+Fork işlemi tamamlandıktan sonra, aşağıdaki adımlarla devam edebilirsiniz.
 
 ## Adım 1: Uzaktan Bağlantıları Ayarlama
 
