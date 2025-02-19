@@ -1,6 +1,6 @@
 ### 1. YOL - Lokalinde Conflictleri Çözmek
 
-# 1️⃣ Kendi branch'inde değişiklik yaptın ama commit etmeden main'i güncellemek istiyorsun
+# 1️⃣ Kendi branch'inde değişiklik yaptın VE commit etmeden main'i güncellemek istiyorsun
 git stash  
 
 # 2️⃣ Main branch’ine geç ve güncellenmiş kodları al
