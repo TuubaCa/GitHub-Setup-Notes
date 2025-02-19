@@ -1,0 +1,94 @@
+### 1. YOL - Lokalinde Conflictleri Çözmek
+
+# 1️⃣ Kendi branch'inde değişiklik yaptın ama commit etmeden main'i güncellemek istiyorsun
+git stash  
+
+# 2️⃣ Main branch’ine geç ve güncellenmiş kodları al
+git checkout main  
+git pull upstream main  
+
+# 3️⃣ Kendi branch’ine dön ve main ile birleştir
+git checkout kendiBranchin  
+git merge main  
+
+# 4️⃣ Stash’lenmiş değişiklikleri geri getir
+git stash pop  
+
+# 5️⃣ Conflict çıkarsa çöz, sonra commit et
+git add .  
+git commit -m "Conflict çözüldü ve main ile merge edildi"  
+
+# 6️⃣ Değişiklikleri GitHub'a gönder
+git push origin kendiBranchin  
+
+---
+
+### 2. YOL - Conflictleri GitHub'da Çözmek
+
+🔄 **Günlük Git Akışı (Conflictleri GitHub'da Çözme)**
+Eğer main ile çatışma (conflict) çıkarsa, GitHub'da çözmek istiyorsan, şu adımları takip et:
+
+# 1️⃣ Kendi branch'inde değişiklik yaptın ama commit etmeden main'i güncellemek istiyorsun
+git stash  
+
+# 2️⃣ Main branch’ine geç ve güncellenmiş kodları al
+git checkout main  
+git pull upstream main  
+
+# 3️⃣ Kendi branch’ine dön ve main ile birleştir
+git checkout kendiBranchin  
+git merge main  
+
+# 4️⃣ Merge sırasında conflict oluşursa, direkt GitHub’a push et
+git push origin kendiBranchin  
+
+#### **🚀 GitHub'da Conflict Çözme Adımları**
+1. GitHub repo sayfasına git.
+2. **Pull Requests** sekmesine gir.
+3. **"New Pull Request"** butonuna tıkla.
+4. `kendiBranchin` branch’ini `main` ile karşılaştır.
+5. Eğer GitHub **"This branch has conflicts that must be resolved"** diyorsa:
+   - **"Resolve conflicts"** butonuna tıkla.
+   - Açılan editörde çakışmaları (conflict) **manuel olarak** düzelt.
+   - **"Mark as resolved"** butonuna bas.
+   - **"Commit merge"** butonuna tıkla.
+6. PR'yi merge edebilirsin (**Merge Pull Request**).
+
+📤 **5. Merge Edilen Branch’i Lokalde Güncelle**
+Çünkü GitHub’da çözüm yaptın, şimdi kendi local branch’ini güncellemen gerek:
+
+# 1️⃣ Güncellenmiş main branch’ini çek
+git checkout main  
+git pull upstream main  
+
+# 2️⃣ Kendi branch’ine geç ve main ile senkronize et
+git checkout kendiBranchin  
+git reset --hard upstream/main  # GitHub’da merge edilen halini al
+
+# 3️⃣ Artık temiz branch’i push edebilirsin
+git push origin kendiBranchin --force  
+
+---
+
+### 3. YOL - Fetch + Merge ile Güncelleme
+
+# 1️⃣ Kendi branch'inde değişiklikleri commit et
+git add .  
+git commit -m "Yaptığın değişikliğin açıklaması"  
+
+# 2️⃣ Güncellenmiş main branch’ini al (daha kontrollü yöntem)
+git checkout main  
+git fetch upstream  
+git merge upstream/main  
+
+# 3️⃣ Kendi branch’ine dön ve main’i merge yap
+git checkout kendiBranchin  
+git merge main  
+
+# 4️⃣ Eğer conflict çıkarsa düzelt ve commit et
+git add .  
+git commit -m "Conflict çözüldü ve main ile merge edildi"  
+
+# 5️⃣ Değişiklikleri GitHub’a gönder (push)
+git push origin kendiBranchin  
+
